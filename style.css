@@ -1,38 +1,70 @@
 /* СОСТАВЛЯЮЩИЕ САЙТА */
 body {
-  background: linear-gradient(rgb(233, 239, 255), rgb(245, 245, 255));
+  background: linear-gradient(rgb(165, 216, 255) 0%, rgb(203, 234, 255) 100px,rgb(111, 196, 239) 500px, rgb(105, 169, 232) 100%);
   font-family: sans-serif;
 }
 /* лэйаут основного контейнера бокового меню и футера */
 .layout {
   display: flex;
+  padding-inline: 10px;
+  gap: 20px;
 }
 /* боковое меню */
-.side-menu {
-  padding-left: 10px;
-  padding-block: 20px;
-  width: 180px;
-  font-size:0.8em;
-  line-height: 1.6em;
-  word-break: break-all;
+.side-menu-index {
+  background-color: rgb(255, 255, 255, 65%);
+  border-radius: 60px 50px 20px 20px;
+  padding-top: 27px;
+  padding-bottom: 15px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+  text-align: center;
 }
-.side-menu img {
-  padding-left:28px;
+.side-menu-img {
+  width: 100px;
+  height: auto;
+  padding-left:14px;
   padding-bottom:15px;
 }
+.side-menu {
+  padding-left: 30px;
+  padding-bottom: 30px;
+  width: 200px;
+  font-size: 0.9em;
+  line-height: 1.6em;
+  word-break: break-all;
+  background-color: rgb(255, 255, 255, 85%);
+  border: solid 1px aquamarine;
+  border-radius: 10px 20px 50px 20px;
+}
 .side-menu-label {
+  display: inline-block;
   padding-top: 1.5em;
   opacity:50%;
   border-bottom: 1px solid lightgrey;
 }
+.side-menu-button {
+  margin-left: -30px;
+  padding-left: 30px;
+  padding-top: 12px;
+  padding-bottom: 14px;
+  margin-block: 4px;
+  width: 95%;
+  display: inline-block;
+  border-radius: 0 15px 20px 0;
+  background-color: rgb(227, 244, 255, 75%);
+}
+
 /* основной контейнер */
 .container {
-  background: white;
+  background: rgb(255, 255, 255, 95%);
   padding-inline: 50px;
   padding-block: 25px;
   flex: 1;
   border: solid 1px aquamarine;
+  border-radius: 5px 10px 15px 10px;
   line-height: 1.4em;
+  height: 100%;
+  padding-bottom: 75px;
 }
 /* подвал */
 .site-footer {
@@ -65,7 +97,7 @@ body {
 .characters a:nth-child(8),
 .characters a:nth-child(9),
 .characters a:nth-child(11) {
-  background-color: white;
+  background-color: transparent;
 }
 /* тёмные клетки */
 .characters a:nth-child(2),
@@ -74,16 +106,30 @@ body {
 .characters a:nth-child(7),
 .characters a:nth-child(10),
 .characters a:nth-child(12) {
-  background-color: #f6fafb;
+  border-radius: 15% 10% 15% 10%;
+  background-color: #e8fbfb;
+}
+
+.greeting {
+  display: inline-block;
+  margin-inline: 60px;
+  width: 80%;
+  height: auto;
+  padding: 10px 30px 35px 30px;
+  text-align: center;
+  border: 5px solid white;
+  border-radius: 15px 20px 75px 75px;
+  box-shadow: 0 5px 8px rgb(0, 0 , 0, 5%);
+  background-color: #9fd4fc;
 }
 
 /* ЦВЕТ ССЫЛОК */
 a {
-  color: rgb(46, 96, 171);
+  color: rgb(3, 142, 135);
   white-space: nowrap;
 }
 a:visited {
-  color: rgb(71, 71, 117);
+  color: rgb(73, 82, 132);
 }
 
 br {
@@ -256,6 +302,7 @@ div.gallery-item div.desc {
 .bubble.princess  { --bubble-color: rgb(251, 186, 234); }
 .bubble.yuhab  { --bubble-color: rgb(155, 220, 158); }
 .bubble.teto { --bubble-color: rgb(218, 169, 222); }
+.bubble.blazey { --bubble-color: rgb(246, 180, 139); }
 
 details {
   max-width: 600px;
