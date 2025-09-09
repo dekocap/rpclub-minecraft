@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Капитан Юхав</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="layout">
+    <div id="side-menu"></div>
+    <div class="container">
+        <div class="first-heading">Принцесса Аквария</div>
+        <div id="infobox-container"></div> <!-- инфобокс персонажа -->
+        <!-- введение -->
+        <p><b>Капитан Юхав</b> —
+        <!-- содержание -->
+        <!-- ЗАГОЛОВКИ -->
+        <!-- внешность -->
+        <h2>Внешность</h2>
+        <img src="assets/yuhabIdleFront.png" height="200px" class="left-image"><img src="assets/yuhabIdleBack.png" height="200px" class="left-image">выглядит как
+        <!-- личность -->
+        <h2>Личность</h2>
+        <!-- взаимоотношения -->
+        <h2>Отношения</h2>
+        <h3 id="princess">Принцесса Аквария</h3>
+        <i>См. также: <a href="princess.html#yuhab">Принцесса Аквария#Капитан Юхав</a></i><br>
+        <!-- история -->
+        <h2>История</h2>
+        <!-- галерея -->
+        <h2>Галерея</h2>
+    </p>
+    </div>
+    </div>
+    <div id="site-footer"></div>
+    <script src="load-components.js"></script> <!-- подгружает боковое меню и футер -->
+    <!-- ЗАПОЛНЕНИЕ ИНФОБОКСА -->
+    <script>
+    const infoboxData = {
+      title: "Капитан Юхав",
+      image: "assets/yuhabIdle.png",
+      fields: {
+        "Возраст": "49",
+        "Раса": "Человек",
+        "Автор": "Юра",
+        "Первое появление": "<a href='first-day.html'>Первый день</a>",
+        "Присутствовали на":"Все дни",
+      }
+    };
+    fetch('character-infobox.html')
+    .then(r => r.text())
+    .then(html => {
+      const container = document.getElementById("infobox-container");
+      container.innerHTML = html;
+      container.querySelector(".infobox-title").innerText = infoboxData.title;
+      container.querySelector(".infobox-image img").src = infoboxData.image;
+      container.querySelector(".infobox-image img").alt = infoboxData.title;
+      const rows = container.querySelectorAll(".infobox-table tr");
+      rows.forEach(row => {
+        const th = row.querySelector("th");
+        const td = row.querySelector("td");
+        if(th && td) {
+          const key = th.innerText;
+          if(infoboxData.fields[key]) {
+            td.innerHTML = infoboxData.fields[key];
+          } else {
+            row.remove();
+          }
+        }
+      });
+      })
+    </script>
+  </body>
+</html>

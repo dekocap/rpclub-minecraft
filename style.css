@@ -1,0 +1,392 @@
+/* СОСТАВЛЯЮЩИЕ САЙТА */
+body {
+  background: linear-gradient(rgb(233, 239, 255), rgb(245, 245, 255));
+  font-family: sans-serif;
+}
+/* лэйаут основного контейнера бокового меню и футера */
+.layout {
+  display: flex;
+}
+/* боковое меню */
+.side-menu {
+  padding-left: 10px;
+  padding-block: 20px;
+  width: 180px;
+  font-size:0.8em;
+  line-height: 1.6em;
+  word-break: break-all;
+}
+.side-menu img {
+  padding-left:28px;
+  padding-bottom:15px;
+}
+.side-menu-label {
+  padding-top: 1.5em;
+  opacity:50%;
+  border-bottom: 1px solid lightgrey;
+}
+/* основной контейнер */
+.container {
+  background: white;
+  padding-inline: 50px;
+  padding-block: 25px;
+  flex: 1;
+  border: solid 1px aquamarine;
+  line-height: 1.4em;
+}
+/* подвал */
+.site-footer {
+  margin-left: 180px;
+  padding: 35px;
+  padding-bottom: 10px;
+  opacity:50%;
+  text-align: center;
+  font-size: 90%;
+}
+
+/* ЗАГЛАВНАЯ СТРАНИЦА */
+ /* таблица персонажей */
+.characters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+}
+.characters img {
+  max-width: 150px;
+}
+.characters a:hover img {
+  transform: scale(1.1);
+}
+/* шахматный порядок фона таблицы персонажей */
+/* светлые клетки */
+.characters a:nth-child(1),
+.characters a:nth-child(3),
+.characters a:nth-child(6),
+.characters a:nth-child(8),
+.characters a:nth-child(9),
+.characters a:nth-child(11) {
+  background-color: white;
+}
+/* тёмные клетки */
+.characters a:nth-child(2),
+.characters a:nth-child(4),
+.characters a:nth-child(5),
+.characters a:nth-child(7),
+.characters a:nth-child(10),
+.characters a:nth-child(12) {
+  background-color: #f6fafb;
+}
+
+/* ЦВЕТ ССЫЛОК */
+a {
+  color: rgb(46, 96, 171);
+  white-space: nowrap;
+}
+a:visited {
+  color: rgb(71, 71, 117);
+}
+
+br {
+  margin-bottom: 0.5em;
+}
+
+/* ЗАГОЛОВКИ */
+/* заголовок-название статьи */
+.first-heading {
+  font-size: 1.8em;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 5px;
+  margin-bottom: 11px;
+}
+/* заголовок второго уровня */
+h2 {
+  font-weight: normal;
+  padding-bottom: 4px;
+  padding-top: 8px;
+  border-bottom: solid 1px;
+  border-image: linear-gradient(to right, lightgray, white) 1;
+  clear: left;
+}
+/* заголовок третьего уровня */
+h3 {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+}
+
+/* ПЛАШКИ С ЦИТАТАМИ ПЕРСОНАЖЕЙ */
+/* тето */
+.teto-quote {
+  display: flex;
+  border: solid 1.5px;
+  background-color: rgb(219, 189, 219);
+  margin-inline: 45px;
+  padding-inline: 8px;
+  margin-bottom: 11px;
+  align-items: center;
+  gap: 14px;
+}
+.teto-quote img {
+  max-width: 60px;
+}
+
+/* ИНФОБОКСЫ */
+/* инфобокс персонажа */
+.character-infobox {
+  float: right;
+  width: 250px;
+  background: #f7f7f7;
+  border: 1px solid #c6c6c6;
+  /*outline: 11px solid white;*/
+  padding: 10px;
+  margin-left: 25px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.infobox-title {
+  text-align: center;
+  font-size: 18px;
+  margin: 0 0 10px 0;
+  font-weight: bold;
+}
+.infobox-image {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.infobox-image img {
+  max-width: 100%;
+  border-radius: 4px;
+}
+infobox-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.infobox-table th, 
+.infobox-table td {
+  padding: 6px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.section-header th {
+  background-color: #e3f2fd;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px;
+  border-bottom: 2px solid #bbb;
+}
+
+/* КАРТИНКИ, ГАЛЕРЕИ */
+/* изображение слева от текста */
+.left-image {
+  float: left;
+  margin-right: 35px;
+  margin-bottom: 30px;
+}
+
+div.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+div.gallery-item {
+  margin: 5px;
+  border: 1px solid #ccc;
+  background-color: rgb(242, 247, 255);
+  width: 180px;
+  height:100%;
+}
+
+div.gallery-item:hover {
+  border: 1px solid #777;
+}
+
+div.gallery-item img {
+  width: 100%;
+  height: auto;
+}
+
+div.gallery-item div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+.icon {
+  max-height: 2.4em;
+  padding-block: -10px;
+  margin-block: -12px;
+  margin-inline: -6px;
+}
+
+/* СПИЧБАБЛЫ */
+.message {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.bubble {
+  --bubble-color: rgb(251, 171, 229);
+  position: relative;
+  display: inline-block;
+  background: var(--bubble-color);
+  color: black;
+  text-align: left;
+  padding: 10px 15px;
+  border-radius: 10px;
+  max-width: 60%;
+  word-wrap: break-word;
+}
+.bubble:after {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 15px;
+  border-width: 10px 20px 10px 10px;
+  border-style: solid;
+  border-color: transparent var(--bubble-color) transparent transparent;
+}
+.bubble-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  flex-shrink: 0; /* не сжимать картинку */
+}
+.bubble.princess  { --bubble-color: rgb(251, 186, 234); }
+.bubble.yuhab  { --bubble-color: rgb(155, 220, 158); }
+.bubble.teto { --bubble-color: rgb(218, 169, 222); }
+
+details {
+  max-width: 600px;
+  padding: 5px 0 5px 15px;
+  border-radius: 7px 12px 12px 7px;
+  background-color: rgb(242, 247, 255);
+  margin-bottom: 10px;
+  background-image: url(assets/bubble.png), linear-gradient(rgb(242, 247, 255) 85%, white);
+  background-clip: border-box;
+  background-image: cross-fade(1);
+}
+details > summary {
+  cursor: pointer;
+}
+
+/* ШРИФТЫ */
+@font-face {
+  font-family: mojangles;
+  src: url(fonts/mojangles.ttf);
+}
+
+/* КНИГА */
+.book {
+  position: relative;
+  max-width: 800px;
+  height: 500px;
+  font-family: mojangles;
+  background: url(assets/openBook.png) no-repeat center/cover;
+  background-size: contain;
+  margin-bottom: -10px;
+}
+.page {
+  position: absolute;
+  top: 10%;
+  bottom: 12%;
+  width: 38%;
+  padding: 2%;
+  line-height: 1.2em;
+  font-size: 1.3em;
+  overflow-wrap: break-word;
+}
+.page.left {
+  left: 7%;
+}
+.page.right {
+  right: 5%;
+}
+.page-number {
+  position: absolute;
+  left: 48%;
+  transform: translateX(-48%);
+  bottom:-3%;
+  color: #b89f88;
+}
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #d9c39c;
+  border: 2px solid #000;
+  font-size: 18px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.nav.prev { left: -50px; }
+.nav.next { right: -50px; }
+
+ /* Style the tab */
+.tab {
+  overflow: hidden;
+  background-color: rgb(242, 247, 255);
+  border-radius: 10px 10px 0 0;
+  max-width: 600px;
+}
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 1em;
+  width: 200px;
+}
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: rgb(220, 234, 255);
+  font-weight: bolder;
+}
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+} 
+
+.pagecontent {
+  display: none; /* все скрыты */
+}
+.pagecontent.active {
+  display: flex; /* только выбранная пара страниц */
+}
+
+.tabpage {
+  overflow: hidden;
+  background-color: #8B3D27;
+  border: solid black 3px;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  max-width: 200px;
+  color: #FFF9EB;
+  font-family: mojangles;
+  padding: 10px;
+}
+.pagetab {
+  display: flex;
+  gap: 10px;
+  margin-left: 80px;
+}
+.pagetab button {
+  cursor: pointer;
+  font-size: 1.3em;
+}
+.tabpage:hover {
+  background-color: #8a1616;
+}
+/*.pagetab button.active {
+  background-color: #8a1616;
+}*/
