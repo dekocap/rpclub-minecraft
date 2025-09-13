@@ -142,7 +142,6 @@ body {
 /* ЦВЕТ ССЫЛОК */
 a {
   color: rgb(3, 142, 135);
-  white-space: nowrap;
 }
 a:visited {
   color: rgb(73, 82, 132);
