@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Смотритель маяка</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
   </head>
   <body>
     <div class="layout">
@@ -12,20 +13,22 @@
         <div class="first-heading">Смотритель маяка</div>
         <div id="infobox-container"></div> <!-- инфобокс персонажа -->
         <!-- введение -->
-        <p><b>Смотритель маяка</b> —
+        <p><b>Смотритель маяка</b> — сошедший с ума старик. По его словам, он всю жизнь провёл на <a href="locations.html#island">Острове</a>.
         <!-- содержание -->
         <!-- ЗАГОЛОВКИ -->
         <!-- внешность -->
         <h2>Внешность</h2>
-        <img src="assets/keeperIdleFront.png" height="200px" class="left-image"><img src="assets/keeperIdleBack.png" height="200px" class="left-image">выглядит как
+        <img src="assets/keeperIdleFront.png" height="200px" class="left-image"><img src="assets/keeperIdleBack.png" height="200px" class="left-image">Всё тело Смотрителя усыпано разноцветными квадратами, напоминающими экранные помехи. Он одет в чёрную рабочую форму, уже изношенную за годы службы.
         <!-- личность -->
         <h2>Личность</h2>
-        <!-- взаимоотношения -->
+        Смотритель маяка ведёт себя крайне экстравагантно. То, что он говорит, кажется бессмысленным всем, кто его встречает.
+        <blockquote>Ладно, сынок, хочу тебя предупредить — у меня в руке двадцать хлеба, так что свой следующий ход продумывай крайне аккуратно.<br><small><i><a href="yuhab.html">Юхаву</a>, <a href="timeline.html#first-day">второй день</a>.</i></small></blockquote>
+        <!-- взаимоотношения
         <h2>Отношения</h2>
         <h3 id="princess">Принцесса Аквария</h3>
-        <i>См. также: <a href="princess.html#keeper">Принцесса Аквария#Смотритель маяка</a></i><br>
-        <!-- история -->
-        <h2>История</h2>
+        <i>См. также: <a href="princess.html#keeper">Принцесса Аквария#Смотритель маяка</a></i><br> -->
+        <!-- история
+        <h2>История</h2> -->
         <!-- галерея -->
         <h2>Галерея</h2>
     </p>
@@ -39,11 +42,12 @@
       title: "Смотритель маяка",
       image: "assets/keeperIdle.png",
       fields: {
-        "Возраст": "72",
-        "Раса": "Дедушка",
+        "Также известны как": "Дедушка",
+        "Возраст (лет)": "72",
+        "Раса": "Человек",
         "Автор": "Сава",
         "Первое появление": "<a href='timeline.html#second-day'>Второй день</a>",
-        "Присутствовали на":"",
+        "Присутствовали на":"Дни 2, 5, 8",
       }
     };
     fetch('character-infobox.html')
