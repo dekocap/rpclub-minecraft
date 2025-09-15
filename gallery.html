@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Галерея</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <style>
+        .search-bar { margin-block: 15px}
+        #searchInput {
+            width: 100%;
+            max-width: 1000px;
+            height: 40px;
+            padding: 5px 10px;
+            border: 1px solid #aaa;
+            border-radius: 8px;
+        }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; justify-content: center;}
+        .card { max-width: 150px; margin: 0; border: 1px solid #ccc; padding: 10px; border-radius: 8px; background: #fafafa; word-break: break-word; overflow-wrap: break-word;}
+        .card img { max-width: 100%; border-radius: 6px; }
+        .tags, .author { font-size: 0.9em; color: #555; margin-top: 5px; }
+        .tag-cloud { margin-bottom: 20px; }
+        .tag-cloud button {
+            margin: 3px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            background: #eee;
+            font-size: 0.85em;
+        }
+        .tag-cloud button:hover { background: #ddd; }
+        .tags a, .author a {
+            display: inline-block;
+            margin: 2px 4px 2px 0;
+            text-decoration: underline;
+            color: #0077cc;
+            cursor: pointer;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <div id="side-menu"></div>
+      <div class="container">
+        <div class="first-heading">Галерея</div>
+        Архив творчества по серверу с функцией поиска. Минус («-») перед тегом исключает его из поиска.<br>Ссылки на <i>постоянных</i> авторов: <a href="https://t.me/dorkdusya">Дуся<sup>(t.me)</sup></a>, <a href="https://t.me/bbbbambooz">Бамбуз<sup>(t.me)</sup></a>, <a href="https://t.me/henryshalun_1">Генри<sup>(t.me)</sup></a>, <a href="https://t.me/alexayelley">Алекса<sup>(t.me)</sup></a>, <a href="https://t.me/donkeweedbar">Сава<sup>(t.me)</sup></a>, <a href="https://t.me/toplel333">Алина<sup>(t.me)</sup></a>, <a href="https://t.me/ritorka">Ритору<sup>(t.me)</sup></a>, <a href="https://t.me/Deromaru">Деромару<sup>(t.me)</sup></a>.
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Поиск по тегам и авторам (например: тето 2персонажа -бамбуз)">
+        </div>
+        <div class="tag-cloud" id="tagCloud"></div>
+        <div class="gallery" id="gallery"></div>
+      </div>
+    </div>
+    <div id="site-footer"></div>
+    <script src="load-components.js"></script>
+    <script>
+        let artworks = [];
+
+        async function loadGallery() {
+            const res = await fetch('gallery.json');
+            artworks = (await res.json()).reverse();
+            renderGallery(artworks);
+            renderTagCloud();
+        }
+
+        function renderGallery(items) {
+            const container = document.getElementById('gallery');
+            container.innerHTML = "";
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                // Картинка
+                const imgLink = document.createElement('a');
+                imgLink.href = item.image;
+                imgLink.target = "_blank";
+                const img = document.createElement('img');
+                img.src = item.image;
+                img.alt = item.title;
+                imgLink.appendChild(img);
+                card.appendChild(imgLink);
+
+                // Автор
+                const authorDiv = document.createElement('div');
+                authorDiv.className = 'author';
+                const authorLink = document.createElement('a');
+                authorLink.href = "#";
+                authorLink.textContent = item.author;
+                authorLink.onclick = (e) => {
+                    e.preventDefault();
+                    const input = document.getElementById('searchInput');
+                    if (!input.value.includes(item.author)) {
+                        input.value = (input.value + " " + item.author).trim();
+                        input.dispatchEvent(new Event('input'));
+                    }
+                };
+                authorDiv.appendChild(document.createTextNode("Автор: "));
+                authorDiv.appendChild(authorLink);
+                card.appendChild(authorDiv);
+
+                // Теги
+                const tagsDiv = document.createElement('div');
+                tagsDiv.className = 'tags';
+                tagsDiv.textContent = "Теги: ";
+                item.tags.forEach(tag => {
+                    const tagLink = document.createElement('a');
+                    tagLink.textContent = tag;
+                    tagLink.href = "#";
+                    tagLink.onclick = (e) => {
+                        e.preventDefault();
+                        const input = document.getElementById('searchInput');
+                        if (!input.value.includes(tag)) {
+                            input.value = (input.value + " " + tag).trim();
+                            input.dispatchEvent(new Event('input'));
+                        }
+                    };
+                    tagsDiv.appendChild(tagLink);
+                });
+                card.appendChild(tagsDiv);
+
+                container.appendChild(card);
+            });
+        }
+
+        function renderTagCloud() {
+            const tagCounts = {};
+            artworks.forEach(item => {
+                item.tags.forEach(tag => {
+                    if (!tagCounts[tag]) tagCounts[tag] = 0;
+                    tagCounts[tag]++;
+                });
+                const author = item.author;
+                if (!tagCounts[author]) tagCounts[author] = 0;
+                tagCounts[author]++;
+            });
+            const container = document.getElementById('tagCloud');
+            container.innerHTML = "";
+            for (const tag in tagCounts) {
+                const btn = document.createElement('button');
+                btn.textContent = `${tag} (${tagCounts[tag]})`;
+                btn.onclick = () => {
+                    const input = document.getElementById('searchInput');
+                    if (!input.value.includes(tag)) {
+                        input.value = (input.value + " " + tag).trim();
+                        input.dispatchEvent(new Event('input'));
+                    }
+                };
+                container.appendChild(btn);
+            }
+        }
+
+        function applySearch(queryStr) {
+            const query = queryStr.toLowerCase().split(" ").filter(Boolean);
+            const positive = query.filter(q => !q.startsWith("-"));
+            const negative = query.filter(q => q.startsWith("-")).map(q => q.slice(1));
+
+            const filtered = artworks.filter(item =>
+                positive.every(q =>
+                    item.author.toLowerCase().includes(q) ||
+                    item.tags.some(t => t.toLowerCase().includes(q))
+                ) &&
+                negative.every(q =>
+                    !item.author.toLowerCase().includes(q) &&
+                    !item.tags.some(t => t.toLowerCase().includes(q))
+                )
+            );
+            renderGallery(filtered);
+        }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            applySearch(e.target.value);
+        });
+
+        loadGallery();
+    </script>
+  </body>
+</html>
